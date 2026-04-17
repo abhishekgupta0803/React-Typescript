@@ -1,0 +1,1 @@
+export type operations = "sub" | "Add" | "Divide";
