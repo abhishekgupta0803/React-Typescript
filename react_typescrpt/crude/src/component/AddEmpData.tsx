@@ -56,7 +56,7 @@ const [email, setEmail] = useState("");
         </div>
         <div>
           <input type="button" value="Back" onClick={HandelBackBtn} />
-          <input type="submit" value="ADD" onClick={HandelSubmitBtn}/>
+          <input type="submit" value="ADD" onClick={()=>HandelSubmitBtn}/>
         </div>
       </form>
     </div>
