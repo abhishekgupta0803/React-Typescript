@@ -58,7 +58,8 @@ const ADDEmployee = (props: props) => {
         </div>
         <div>
           <input type="button" value="Back" onClick={backBtn} />
-          <input type="submit" value="Add" onClick={()=>onClickAddBtn}/>
+          {/* <button type="button"> Button</button> */}
+          <input type="submit" value="Add" />
         </div>
       </form>
     </div>

@@ -25,6 +25,13 @@ const Home = () => {
     setShowPage(PageEnum.list)
     
   }
+
+  const deleteEmployeehand = (data:Employee)=>{
+    const EmpIndex = empList.indexOf(data);
+    const tempEmp =  [...empList];
+   tempEmp.splice(EmpIndex , 1);
+   setEmpList(tempEmp)
+  }
   return (
     <>
       <article>
@@ -40,7 +47,7 @@ const Home = () => {
             <div className="add-btn">
               <input type="button" value="ADD Emp" onClick={HandlerAddBtn} />
           </div>
-          <EmployeeList list={empList} />
+          <EmployeeList list={empList}  onBtnDeleteHand={deleteEmployeehand}/>
             </>
           }
           {

@@ -2,10 +2,11 @@ import type { Employee } from "./Employee.type";
 import "./employeelist.stylr.css";
 type props = {
   list: Employee[];
+  onBtnDeleteHand : (data :Employee)=>void;
 };
 
 const EmployeeList = (props: props) => {
-  const { list } = props;
+  const { list  , onBtnDeleteHand} = props;
   return (
     <div>
       <table>
@@ -24,7 +25,7 @@ const EmployeeList = (props: props) => {
               <div>
                 <input type="button" value="View" />
                 <input type="button" value="Edit" />
-                <input type="button" value="Delete" />
+                <input type="button" value="Delete" onClick={()=>onBtnDeleteHand(data)} />
               </div>
             </td>
           </tr>
