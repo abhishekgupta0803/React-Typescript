@@ -1,0 +1,134 @@
+/* Full page container */
+.container {
+  min-height: 100vh;
+  background-color: #0b0b0b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main form box */
+.form {
+  background-color: #111;
+  padding: 30px;
+  border-radius: 10px;
+  width: 350px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* Form heading */
+.heading {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Input fields */
+.input {
+  padding: 12px;
+  background-color: #111;
+  border: 1px solid red;
+  color: white;
+  border-radius: 4px;
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+}
+
+.input:focus {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+}
+
+/* Checkbox labels */
+.checkboxLabel {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Error messages */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -8px;
+}
+
+/* Language field row */
+.languageRow {
+  margin-bottom: 10px;
+}
+
+/* Add button */
+.addBtn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.addBtn:hover {
+  opacity: 0.9;
+}
+
+/* Remove button */
+.removeBtn {
+  margin-top: 2px;
+  padding: 6px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 10px;
+  
+}
+
+.removeBtn:hover {
+  opacity: 0.9;
+}
+
+/* Education radio group */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radioGroup p {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.radioGroup label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* Submit button */
+.submitBtn {
+  padding: 12px;
+  background-color: #87cefa;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: #5bb9f5;
+}
