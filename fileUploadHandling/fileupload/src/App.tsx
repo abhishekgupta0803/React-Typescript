@@ -1,0 +1,11 @@
+import FileUploader from "./component/FileUploader"
+
+const App = () => {
+  return (
+    <div>
+     < FileUploader />
+    </div>
+  )
+}
+
+export default App
