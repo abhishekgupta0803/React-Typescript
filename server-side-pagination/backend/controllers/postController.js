@@ -27,7 +27,7 @@ const postCreate = async (req, res) => {
 const posts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const perPage = 3;
+    const perPage = 5;
     const totalPosts = await PostDb.countDocuments();
     const totalPages = Math.ceil(totalPosts / perPage);
 
@@ -43,8 +43,8 @@ const posts = async (req, res) => {
       .exec();
 
       return res.status(200).json({posts , totalPages , page ,perPage})
-  } catch (error) {
-    res.status(400).json({
+  }   catch (error) {
+      res.status(400).json({
       message: err.message,
       errors: err.errors,
     });

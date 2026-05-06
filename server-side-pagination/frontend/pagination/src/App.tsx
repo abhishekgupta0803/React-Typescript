@@ -1,10 +1,12 @@
 import Pagination from "./components/Pagination"
 
 
+
+
 const App = () => {
   return (
     <div>
-      <Pagination />
+      <Pagination   />
     </div>
   )
 }
