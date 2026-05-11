@@ -20,6 +20,7 @@ const FileUploader = () => {
 
     const formData = new FormData();
     formData.append("file", file);
+    console.log(formData)
 
     try {
       await axios.post("https://httpbin.org/post", formData, {

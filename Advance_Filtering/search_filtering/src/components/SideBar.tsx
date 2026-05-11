@@ -24,8 +24,10 @@ const SideBar = () => {
   useEffect(() => {
     const FetchProducts = async () => {
       try {
+      
         const response = await fetch("https://dummyjson.com/products");
         const data: FetchResponse = await response.json();
+        console.log(data)
 
         const UniqueCategoryes = Array.from(
           new Set(data.products.map((product: Products) => product.category)),
@@ -82,6 +84,7 @@ const SideBar = () => {
    
   }
 
+  //reset
   const HandelResetFilter = ()=>{
     setSearchQuery("");
     setSelectedCategory("")
@@ -99,7 +102,7 @@ const SideBar = () => {
           className="border-2 rounded px-2 sm:mb-0"
           placeholder="Search Product"
           value={searchQuery}
-          onChange={e=>setSearchQuery(e.target.value)}
+          onChange={(e)=>setSearchQuery(e.target.value)}
         />
         <div className="flex justify-center items-center">
           <input
