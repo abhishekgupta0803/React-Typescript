@@ -45,7 +45,7 @@ const TopSellers = () => {
   };
 
   return (
-    <div className="bg-white p-5 mt-19 border rounded w-full mr-15  mr-15">
+    <div className=" card bg-white p-5 mt-19 border rounded w-full mr-15  mr-15">
       <h2 className="text-xl font-bold mb-5">
         Top Sellers
       </h2>

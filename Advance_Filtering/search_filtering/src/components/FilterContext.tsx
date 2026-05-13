@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 
+
+
 interface FilterContextType {
   searchQuery: string;
   setSearchQuery: (query: string) => void;

@@ -5,9 +5,11 @@ import axios from "axios";
 import BookCard from "./BookCard";
 import { useDebounce } from "./Debouncing";
 
+// import ThemeToggle from "./ThemeBtn";
+
+
 const MainContent = () => {
-  
-  const { searchQuery, selectedCategory, minPrice, maxPrice, keyword } =
+   const { searchQuery, selectedCategory, minPrice, maxPrice, keyword } =
     UseFilter();
   const [products, setProducts] = useState<any[]>([]);
   const [filter, setFilter] = useState("all");
@@ -115,11 +117,11 @@ const MainContent = () => {
   };
 
  return (
-  <section className="xl:w-[55rem] mr-[10rem] lg:w-[55rem] sm:w-[40rem] xs:w-[20rem] p-5">
+  <section className="  xl:w-[55rem] mr-[10rem] lg:w-[55rem] sm:w-[40rem] xs:w-[20rem] p-5">
     
     {/* Top Filter Button */}
-    <div className="w-full flex justify-end mb-5">
-      <div className="relative">
+    <div className="  w-full flex justify-end mb-5">
+      <div className=" relative">
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
           className="border px-4 py-2 rounded-full flex items-center"
@@ -131,7 +133,7 @@ const MainContent = () => {
         </button>
 
         {dropdownOpen && (
-          <div className="absolute right-0 bg-white border border-gray-300 rounded mt-2 w-40 shadow-lg z-10">
+          <div className=" card absolute right-0 bg-white border border-gray-300 rounded mt-2 w-40 shadow-lg z-10">
             <button
               onClick={() => {
                 setFilter("cheap");
@@ -161,9 +163,11 @@ const MainContent = () => {
             >
               Popular
             </button>
+            {/* <ThemeToggle/> */}
           </div>
         )}
       </div>
+
     </div>
 
     {/* Products */}
