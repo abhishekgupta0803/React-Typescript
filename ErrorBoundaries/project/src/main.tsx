@@ -1,10 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-import App from './App.tsx'
+import App from "./App.tsx";
+import ErrorBoundary from "./components/ErrorBoundary.tsx";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+createRoot(document.getElementById("root")!).render(
+  <ErrorBoundary fallback={<p>Error in App Component</p>}>
+    <StrictMode>
+      <App />
+    </StrictMode>
+    ,
+  </ErrorBoundary>,
+);
