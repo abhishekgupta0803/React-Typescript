@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin",
+      "permissions": [
+        "view_dashboard",
+        "view_products",
+        "edit_product",
+        "delete_product"
+      ]
+    },
+    {
+      "id": "2",
+      "username": "manager",
+      "password": "manager123",
+      "role": "manager",
+      "permissions": ["view_dashboard", "view_products", "edit_product"]
+    },
+    {
+      "id": "3",
+      "username": "user",
+      "password": "user123",
+      "role": "user",
+      "permissions": ["view_dashboard", "view_products"]
+    },
+    {
+      "id": "4",
+      "username": "guest",
+      "password": "guest123",
+      "role": "guest",
+      "permissions": ["view_dashboard"]
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "I Phone 16",
+      "price": 999
+    },
+    {
+      "id": "2",
+      "name": "I Phone 16",
+      "price": 999
+    },
+    {
+      "id": "3",
+      "name": "I Phone 16",
+      "price": 999
+    }
+  ]
+}
