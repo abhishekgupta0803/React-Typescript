@@ -43,7 +43,7 @@ export const getProducts = async (): Promise<Product[] | null> => {
 
 export const deleteProducts = async (id: string): Promise<void> => {
   try {
-    const response = await axios.delete(`${API_URL}/products${id}`);
+    const response = await axios.delete(`${API_URL}/products/${id}`);
     return response.data || null;
   } catch (error) {
     console.error("Fail to delete products:", error);

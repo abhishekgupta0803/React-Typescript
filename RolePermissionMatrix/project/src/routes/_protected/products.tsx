@@ -1,7 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import ProtectedRoutes from "../../components/ProtectedRoutes";
 import { PERMISSIONS } from "../../utils/roles";
-import { getProducts, type Product } from "../../api";
+import { deleteProducts, getProducts, type Product } from "../../api";
+import { useAuth } from "../../context/AuthContext";
 
 export const Route = createFileRoute("/_protected/products")({
   component: () => (
@@ -16,12 +17,27 @@ export const Route = createFileRoute("/_protected/products")({
 
 function RouteComponent() {
   const products = Route.useLoaderData();
-  const handelDelete = async (id:string, e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if(!hasPermission(PERMISSIONS.DELETE_PRODUCTS)){
-  }
+  const { hasPermission } = useAuth();
+  const navigate = useNavigate();
 
-  // console.log("Products data:", products[0].name);
+  const handelDelete = async (
+    id: string,
+    e: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    e.preventDefault();
+    if (!hasPermission(PERMISSIONS.DELETE_PRODUCT)) {
+      navigate({ to: "/unauthorize" });
+      return;
+    }
+
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      // Call API to delete product
+      await deleteProducts(id);
+       products?.filter((product: any) => product.id !== id);
+      
+    }
+  };
+
   return (
     <div className="p-10">
       <h2 className="text-4xl font-bold mb-2">Products</h2>
@@ -30,11 +46,21 @@ function RouteComponent() {
         {products.map((product: Product) => (
           <li key={product.id} className="text-gray-600 border border-gray-300">
             {product.name} -${product.price}
-            <button type="button" onClick={() => alert(product.name)} className="bg-blue-500 rounded-full px-5 py-1 text-white hover:bg-blue-600 transition">
-              Edit
-            </button>
-             <button type="button" onClick={(e) => handelDelete(product.id, e)} className="bg-blue-500 rounded-full px-5 py-1 text-white hover:bg-blue-600 transition">
-              Edit
+            {hasPermission(PERMISSIONS.EDIT_PRODUCT) && (
+              <button
+                type="button"
+                onClick={() => alert(product.name)}
+                className="bg-blue-500 rounded-full px-5 py-1 text-white hover:bg-blue-600 transition"
+              >
+                Edit
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={(e) => handelDelete(product.id, e)}
+              className="bg-blue-500 rounded-full px-5 py-1 text-white hover:bg-blue-600 transition"
+            >
+              delete
             </button>
           </li>
         ))}

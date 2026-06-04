@@ -17,38 +17,39 @@
       "username": "manager",
       "password": "manager123",
       "role": "manager",
-      "permissions": ["view_dashboard", "view_products", "edit_product"]
+      "permissions": [
+        "view_dashboard",
+        "view_products",
+        "edit_product"
+      ]
     },
     {
       "id": "3",
       "username": "user",
       "password": "user123",
       "role": "user",
-      "permissions": ["view_dashboard", "view_products"]
-    },
-    {
-      "id": "4",
-      "username": "guest",
-      "password": "guest123",
-      "role": "guest",
-      "permissions": ["view_dashboard"]
+      "permissions": [
+        "view_dashboard",
+        "view_products"
+      ]
     }
   ],
   "products": [
     {
       "id": "1",
-      "name": "I Phone 16",
+      "name": "IPhone",
       "price": 999
     },
     {
-      "id": "2",
-      "name": "I Phone 16",
+      "id": "1",
+      "name": "IPhone",
       "price": 999
     },
     {
-      "id": "3",
-      "name": "I Phone 16",
+      "id": "1",
+      "name": "IPhone",
       "price": 999
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
