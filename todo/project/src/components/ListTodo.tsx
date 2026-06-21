@@ -1,0 +1,21 @@
+import { useTodo } from "../context/ContextTodo";
+import ItemsTodo from "./ItemsTodo";
+
+
+export const ListTodo = () => {
+  const {todos} = useTodo();
+  
+  return (
+   <ul>
+     {
+      todos.map((todo)=>(
+        <li>
+           <ItemsTodo key={todo.id} todo={todo} />
+        </li>
+       
+      ))
+     }
+   </ul>
+  
+  )
+}
