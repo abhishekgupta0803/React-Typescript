@@ -3,7 +3,7 @@
     {
       "id": "1",
       "username": "admin",
-      "password": "admin123",
+      "password": "manu",
       "role": "admin",
       "permissions": [
         "view_dashboard",
