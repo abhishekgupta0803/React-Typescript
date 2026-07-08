@@ -16,9 +16,9 @@ const Home = () => {
     if (pasteId) {
       const pasteToEdit = pasteData.find((p: any) => p.id === pasteId);
       setTitle(pasteToEdit.title);
-      console.log(pasteToEdit.title);
+      // console.log(pasteToEdit.title);
       setContent(pasteToEdit.contents);
-      console.log(pasteToEdit.contents);
+      // console.log(pasteToEdit.contents);
     }
   }, [pasteId]);
 

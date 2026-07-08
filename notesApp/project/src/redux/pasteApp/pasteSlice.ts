@@ -24,17 +24,6 @@ export const pasteSlice = createSlice({
   reducers: {
     addPaste: (state, action: PayloadAction<pasteValue>) => {
       const paste = action.payload;
-
-      // if(paste.title.trim() === "" || paste.content.trim()== ""){
-      //    toast.error("Title and Content are required! ")
-      //    return;
-      // }
-      // if (!paste.title.trim() || !paste.content.trim()) {
-      //   toast.error("Title and Content are required!");
-      //   return;
-      // }
-
-      // console.log(state.pasteValue);
       const dublicateTitle = state.pasteValue
         .map((item) => item.title === paste.title)
         .includes(true);
@@ -48,7 +37,7 @@ export const pasteSlice = createSlice({
     },
     updatePaste: (state, action: PayloadAction<pasteValue>) => {
       const updatedPastes = action.payload;
-      console.log(updatedPastes);
+      // console.log(updatedPastes);
       const index = state.pasteValue.findIndex(
         (paste: any) => paste.id === updatedPastes.id,
       );
@@ -61,11 +50,10 @@ export const pasteSlice = createSlice({
     resetPaste: (state) => {
       state.pasteValue = [];
       localStorage.removeItem("pasteValue");
-      // toast.success("Paste Reset Successfully");
     },
     removePaste: (state, action: PayloadAction<pasteValue>) => {
       const pasteId = action.payload;
-      console.log(pasteId);
+      // console.log(pasteId);
       const index = state.pasteValue.findIndex(
         (item: any) => item.id === pasteId,
       );
@@ -79,6 +67,6 @@ export const pasteSlice = createSlice({
 });
 
 export const { addPaste, updatePaste, resetPaste, removePaste } =
-  pasteSlice.actions;
+pasteSlice.actions;
 
 export default pasteSlice.reducer;
