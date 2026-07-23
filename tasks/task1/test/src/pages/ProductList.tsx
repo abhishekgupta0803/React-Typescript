@@ -8,6 +8,7 @@ import SearchBar from "../components/SearchBar";
 import Category from "../components/Category";
 import ProductsSorted from "../components/ProductsSorted";
 import Pagination from "../components/Pagination";
+import { useDebounce } from "../Debouncing/Debounce";
 
 const ProductList = () => {
   const [products, setProducts] = useState<Products[]>([]);
@@ -17,37 +18,45 @@ const ProductList = () => {
   const [category, setCategory] = useState<string>("All");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [current, setCurrent] = useState<number>(1);
+  const debouncedValue = useDebounce(search, 3000);
 
   useEffect(() => {
+    const getProduct = async () => {
+      try {
+        setloading(true);
+        const data = await getProducts();
+
+        setProducts(data);
+        // console.log(data);
+      } catch (err) {
+        console.log(err);
+        setError("Something went wrong");
+      } finally {
+        setloading(false);
+      }
+    };
     getProduct();
   }, []);
 
-  const getProduct = async () => {
-    try {
-      setloading(true);
-      const data = await getProducts();
-
-      setProducts(data);
-      // console.log(data);
-    } catch (err) {
-      console.log(err);
-      setError("Something went wrong");
-    } finally {
-      setloading(false);
-    }
-  };
-
-  if (error) {
-    return <Error message={error} />;
-  }
-  if (loading) {
-    return <Loading />;
-  }
+  //*********************/
 
   const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.title
-      .toLowerCase()
-      .includes(search.toLowerCase());
+    //ex-> abhi?? , abhi!! => ""
+    const normalize = (text: string) =>
+      text.toLowerCase().replace(/[^\w\s]/g, " ");
+
+    const searchWords = normalize(debouncedValue)
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean); // split words
+
+    const searchableText = normalize(
+      `${product.title} ${product.category} ${product.description}`, // title,cat,dsg -search
+    );
+
+    const matchesSearch =
+      searchWords.length === 0 ||
+      searchWords.every((word) => searchableText.includes(word));
 
     const matchesCategory = category === "All" || product.category === category;
 
@@ -66,18 +75,23 @@ const ProductList = () => {
     return 0;
   });
 
-  //pagination 
-  const productPerPage:number = 5;
-  const totalPages:number = Math.ceil (sortProducts.length / productPerPage);
- 
-  const lastIndex:number = productPerPage * current;
-  const firstIndex:number = lastIndex - productPerPage; 
+  // pagination
+  const productPerPage: number = 5;
+  const totalPages: number = Math.ceil(sortProducts.length / productPerPage);
 
-  const pagination = sortProducts.slice(firstIndex , lastIndex);
+  const lastIndex: number = productPerPage * current;
+  const firstIndex: number = lastIndex - productPerPage;
 
- 
+  const pagination = sortProducts.slice(firstIndex, lastIndex);
 
+  //*******/
 
+  if (error) {
+    return <Error message={error} />;
+  }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 py-6">
@@ -105,7 +119,12 @@ const ProductList = () => {
           )}
         </div>
       </div>
-      <Pagination current={current} setCurrent={setCurrent}  totalPages={totalPages} productPerPage={productPerPage} />
+      <Pagination
+        current={current}
+        setCurrent={setCurrent}
+        totalPages={totalPages}
+        productPerPage={productPerPage}
+      />
     </div>
   );
 };

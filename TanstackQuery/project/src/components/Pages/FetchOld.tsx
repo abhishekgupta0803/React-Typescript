@@ -12,6 +12,14 @@ const FetchOld = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 
+
+
+  useEffect(() => {
+      
+    fetchData();
+
+  }, []);
+
   const fetchData = async () => {
     setLoading(true);
     setError(false);
@@ -26,11 +34,7 @@ const FetchOld = () => {
     }
   };
 
-  useEffect(() => {
-      
-    fetchData();
-
-  }, []);
+  
 
   if (loading)
     return (

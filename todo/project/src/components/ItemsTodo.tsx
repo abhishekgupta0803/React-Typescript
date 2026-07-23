@@ -11,6 +11,8 @@ const ItemsTodo = ({ todo }: props) => {
   const { deleteTodo, updateTodo } = useTodo();
   const [isEditing, setEditing] = useState<boolean>(false);
   const [textUpdate, setTextUpdate] = useState(todo.text);
+  // console.log("text",todo.text)
+  console.log(textUpdate)
 
   const handelEditTodo = () => {
     updateTodo(todo.id, textUpdate);
@@ -32,7 +34,7 @@ const ItemsTodo = ({ todo }: props) => {
         </>
       ) : (
         <>
-          <span>{todo.text}</span>
+          <span>{`${todo.text}`}</span>
           <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           <button onClick={() => setEditing(true)}>Edit</button>
         </>

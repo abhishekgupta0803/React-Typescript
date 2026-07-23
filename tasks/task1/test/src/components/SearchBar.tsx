@@ -1,9 +1,13 @@
+
 type Props = {
   value: string;
   onChange: (value: string) => void;
+  // onChange: React.Dispatch<React.SetStateAction<number>>;
 };
 
+
 const SearchBar = ({ value, onChange }: Props) => {
+   console.log("Search=>",value)
   return (
     <div className="w-full flex justify-center px-4 py-4">
       <input

@@ -4,7 +4,7 @@ import ItemsTodo from "./ItemsTodo";
 
 export const ListTodo = () => {
   const {todos} = useTodo();
-  
+   console.log("todos",todos)
   return (
    <ul>
      {

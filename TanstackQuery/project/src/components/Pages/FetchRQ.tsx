@@ -22,13 +22,14 @@ const FetchRQ: React.FC = () => {
     /* pagination */
   }
   const [pagenumber, SetPageNumber] = useState<number>(0);
+  console.log(pagenumber)
 
   const { data, isLoading, isError } = useQuery<Post[]>({
     queryKey: ["posts", pagenumber],
     queryFn: () => getPosts(pagenumber),
-    // refetchInterval:5000,
+    // refetchInterval:1000,
     // refetchIntervalInBackground:true,
-    placeholderData: keepPreviousData,
+    // placeholderData: keepPreviousData,
   });
 
   //delete
