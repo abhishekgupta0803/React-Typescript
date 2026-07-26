@@ -1,0 +1,157 @@
+.dashboard {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.dash-container {
+  width: 500px;
+  text-align: center;
+}
+
+.dash-container button {
+  padding: 8px 16px;
+  margin: 0 8px 20px;
+  cursor: pointer;
+}
+
+.dash-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dash-container th,
+.dash-container td {
+  border: 1px solid #000;
+  padding: 10px;
+  text-align: center;
+}
+
+.dash-container th {
+  background-color: #f2f2f2;
+}
+
+
+.add-container {
+  width: 350px;
+  margin: 40px auto;
+}
+
+.add-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add-container input[type="text"],
+.add-container input[type="number"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-container span {
+  color: red;
+  font-size: 13px;
+  margin-top: -8px;
+}
+
+.add-container label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.add-container button {
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+.add-container button:hover {
+  background-color: #0056b3;
+}
+.list-emp {
+  width: 90%;
+  margin: 30px auto;
+}
+
+.list-emp > button {
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.list-emp > button a {
+  text-decoration: none;
+  color: black;
+}
+
+.list-emp table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.list-emp th,
+.list-emp td {
+  border: 1px solid #000;
+  padding: 10px;
+  text-align: center;
+}
+
+.list-emp th {
+  background-color: #f2f2f2;
+}
+
+.list-emp td button {
+  padding: 6px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.edit-emp {
+  width: 350px;
+  margin: 40px auto;
+}
+
+.edit-emp form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edit-emp input[type="text"],
+.edit-emp input[type="number"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.edit-emp input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.edit-emp span {
+  color: red;
+  font-size: 13px;
+  margin-top: -8px;
+}
+
+.edit-emp button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.edit-emp button:hover {
+  background-color: #0056b3;
+}
