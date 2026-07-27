@@ -17,6 +17,7 @@ const ListEmployee = () => {
             <th>ID</th>
             <th>NAME</th>
             <th>DEPARTEMENTS</th>
+             <th>GENDER</th>
             <th>POSITION</th>
             <th>SALARY</th>
             <th>STATUS</th>
@@ -30,6 +31,7 @@ const ListEmployee = () => {
               <td>{e.id}</td>
               <td>{e.name}</td>
               <td>{e.departments}</td>
+              <td>{e.gender}</td>
               <td>{e.position}</td>
               <td>{e.salary}</td>
               <td>{e.status ? "Active" : "Leave"}</td>
@@ -38,6 +40,10 @@ const ListEmployee = () => {
                 <button onClick={() => deleteEmp(e.id)}>Delete</button>
                 <Link to={`/edit/${e.id}`}>
                   <button>edit</button>
+                </Link>
+                
+                <Link to={`/show/${e.id}`}>
+                  <button>View</button>
                 </Link>
               </td>
             </tr>

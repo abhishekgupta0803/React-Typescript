@@ -15,6 +15,10 @@ const AddFormsValidate = z.object({
     .string()
     .min(2, "value is required")
     .max(20, "max 20 character is required"),
+   gender: z
+    .string()
+    .min(2, "value is required")
+    .max(7, "max 20 character is required"),
   position: z
     .string()
     .min(2, "value is required")
@@ -47,14 +51,15 @@ const EmpUpdate = () => {
       reset({
         name: emp.name,
         departments: emp.departments,
+        gender:emp.gender,
         position: emp.position,
         salary: emp.salary,
       });
     }
   }, [emp, reset]);
   const onSubmit = (data: any) => {
-    const { name, departments, position, salary } = data;
-    updateEmp(id, name, departments, position, salary);
+    const { name, departments, gender,position, salary } = data;
+    updateEmp(id, name, departments, gender,position, salary);
     navigate("/EmpLists");
   };
 
@@ -71,6 +76,13 @@ const EmpUpdate = () => {
           placeholder="Enter departments"
         />
         {errors.departments && <span>{errors.departments.message}</span>}
+
+        <input
+          type="text"
+          {...register("gender")}
+          placeholder="Enter gender"
+        />
+        {errors.gender && <span>{errors.gender.message}</span>}
 
         <input
           type="text"

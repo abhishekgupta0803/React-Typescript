@@ -5,6 +5,7 @@ export interface ContextTypes {
   dashboard: DashboardTable;
   employee: EmployeeTable[];
 
+  totalSal:()=>void;
   totalEmp:()=> void;
   totalDep:()=> void;
   active:()=>void;
@@ -12,6 +13,7 @@ export interface ContextTypes {
   addEmp: (
     name: string,
     departments: string,
+    gender:string,
     position: string,
     status: boolean,
     salary: number,
@@ -21,6 +23,7 @@ export interface ContextTypes {
     id: string,
     name: string,
     departments: string,
+    gender:string,
     position: string,
     salary: number,
   ) => void;

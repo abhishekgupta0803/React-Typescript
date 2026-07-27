@@ -6,7 +6,7 @@ import { context } from "./ContextTypes";
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [employee, setEmployee] = useState<EmployeeTable[]>(() => {
     const emp = localStorage.getItem("employee");
-    // console.log(emp)
+
     return emp ? JSON.parse(emp) : [];
   });
 
@@ -18,6 +18,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
       : {
           totalEmp: 0,
           totalDep: 0,
+          totalSal: 0,
           active: 0,
           leave: 0,
         };
@@ -32,13 +33,10 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem("dashb", JSON.stringify(dashboard));
   }, [dashboard]);
 
-  //crud functionality
-  //add data
-
   const addEmp = (
-    // id: string,
     name: string,
     departments: string,
+    gender: string,
     position: string,
     status: boolean,
     salary: number,
@@ -47,6 +45,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
       id: uuidv4(),
       name,
       departments,
+      gender,
       position,
       status,
       salary,
@@ -65,14 +64,23 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     id: string,
     name: string,
     departments: string,
+    gender:string,
     position: string,
     salary: number,
   ) => {
-    console.log(id)
+    console.log(id);
     setEmployee((prev) =>
-      // console.log()
       prev.map((p: any) =>
-        p.id === id ? { ...p,name:name, departments:departments, position:position, salary:salary } : p,
+        p.id === id
+          ? {
+              ...p,
+              name: name,
+              departments: departments,
+              gender: gender,
+              position: position,
+              salary: salary,
+            }
+          : p,
       ),
     );
   };
@@ -118,9 +126,16 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
       }));
     };
 
+    const totalSal = () => {
+      const salary = employee.map((sal) => sal.salary);
+      const totalSal = salary.reduce((acc, sum) => acc + sum, 0);
+      setDashboard((prev) => ({ ...prev, totalSal }));
+    };
+
     totalEmp();
     totalDep();
     active();
+    totalSal();
   }, [employee]);
 
   return (
